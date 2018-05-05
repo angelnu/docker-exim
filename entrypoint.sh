@@ -29,7 +29,7 @@ opts=(
 	dc_relay_nets "$(ip addr show dev eth0 | awk '$1 == "inet" { print $2 }' | xargs | sed 's/ /:/g')${RELAY_NETWORKS}"
 )
 
-if [ "$DISABLE_IPV6" ]; then 
+if [ "$DISABLE_IPV6" ]; then
         echo 'disable_ipv6=true' >> /etc/exim4/exim4.conf.localmacros
 fi
 
@@ -76,6 +76,6 @@ if [ -f /etc/exim4/_docker_additional_macros ]; then
 	cat /etc/exim4/_docker_additional_macros >> /etc/exim4/exim4.conf.localmacros
 fi
 
-/bin/set-exim4-update-conf "${opts[@]}"
+set-exim4-update-conf "${opts[@]}"
 
 exec "$@"
