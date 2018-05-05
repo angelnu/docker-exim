@@ -12,7 +12,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     find /var/log -type f | while read f; do echo -ne '' > $f; done;
 
-COPY entrypoint.sh set-exim4-update-conf /usr/local/bin/
+COPY entrypoint.sh set-exim4-update-conf /bin/
 
 EXPOSE 25
 ENTRYPOINT ["/bin/entrypoint.sh"]
